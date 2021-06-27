@@ -5,9 +5,9 @@ Todo is an application designed for creating and organising a “To Do” list i
 
 ## Author: Omar Ewies
 
-* [Deployment]()
+* [Deployment](https://todo-oebitw.netlify.app/)
 
-* [Pull Request]()
+* [Pull Request](https://github.com/oebitw/todo/pulls?q=is%3Apr+is%3Aclosed)
 
 
 ## Run the app
