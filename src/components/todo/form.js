@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
 
-function TodoForm(props){
-  const [item, setItem] = useState({});
+import useForm from '../../hooks/FormHook';
 
-  const _handleInputChange = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value });
-  };
+function TodoForm(props) {
+  const [_handleInputChange, _handleSubmit] = useForm(props.handleSubmit);
 
-  const _handleSubmit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    props.handleSubmit(item);
-    const newItem = {};
-    setItem({ newItem });
-  };
 
   return (
-    <>
+    <Card>
       <Card.Header as="h3">Add Item</Card.Header>
       <Card.Body>
         <Form onSubmit={_handleSubmit}>
@@ -55,7 +45,8 @@ function TodoForm(props){
           </Button>
         </Form>
       </Card.Body>
-    </>
+    </Card>
+
   );
 };
 
