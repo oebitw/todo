@@ -1,11 +1,8 @@
-
 import axios from 'axios';
-import { useState } from 'react';
 
 const useAjax = (url) => {
-  const [list, setList] = useState([]);
 
-  const restApi = async (method, url, item) => {
+  const _RESTItems = async (method, url, item) => {
     const result = await axios({
       method: method,
       url: url,
@@ -17,35 +14,26 @@ const useAjax = (url) => {
     return result.data;
   };
 
-  const getHandler = () => {
-    const fetchData = async () => {
-      let data = await restApi('get', url);
-      setList(data.results);
-    };
-    fetchData();
+  const _postItem = async (item) => {
+    await _RESTItems('post', url, item);
   };
 
-  const postHandler = (item) => {
-    restApi('post', url, item);
+  const _deleteItem = async (item) => {
+    let extendedUrl = `${url}/${item._id}`;
+    await _RESTItems('delete', extendedUrl, item);
   };
 
-  const putHandler = (item) => {
+  const _putItem = async (item) => {
     item.complete = !item.complete;
     let extendedUrl = `${url}/${item._id}`;
-    restApi('put', extendedUrl, item);
+    await _RESTItems('put', extendedUrl, item);
   };
 
-
-  const deleteHandler = (item) => {
-    let extendedUrl = `${url}/${item._id}`;
-    restApi('delete', extendedUrl, item);
+  const _getItems = async () => {
+    return _RESTItems('get', url);
   };
 
-
-
-
-  return [list, postHandler, deleteHandler, putHandler, getHandler];
+  return [_postItem, _deleteItem, _putItem, _getItems];
 };
 
 export default useAjax;
-

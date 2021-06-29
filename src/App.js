@@ -1,8 +1,10 @@
 
 import './App.scss'
 
+import Pagination from './context/Pagenation';
 import Header from './components/header/Header'
 import ToDo from './components/todo/todo-connected';
+
 
 
 function App() {
@@ -10,7 +12,10 @@ function App() {
   return (
     <>
       <Header />
-      <ToDo />
+      <Pagination>
+        <ToDo />
+      </Pagination>
+      
     </>
   );
 
