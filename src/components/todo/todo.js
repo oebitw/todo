@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import { Container, Col, Row } from 'react-bootstrap';
+
+
+
 
 import TodoForm from './form.js';
 import TodoList from './list.js';
-
 import TopSection from './progress.js';
-import { Container, Col, Row } from 'react-bootstrap';
-
 import './todo.scss';
+
 
 const ToDo = () => {
   const [list, setList] = useState([]);
